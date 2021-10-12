@@ -9,7 +9,7 @@
     "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
     "lint:style": "stylelint src/**/*.{css,scss,vue}",
     "lint:markup": "vue-tsc --noEmit",
-    "lint": "yarn lint:script && yarn lint:style && lint:markup"
+    "lint": "yarn lint:script && yarn lint:style && yarn lint:markup"
   },
   "husky": {
     "hooks": {
