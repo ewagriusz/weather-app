@@ -1,6 +1,7 @@
 {
   "name": "weather-app",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -20,6 +21,8 @@
     "*": "prettier -w -u"
   },
   "dependencies": {
+    "@popperjs/core": "^2.10.2",
+    "bootstrap": "^5.0.0-beta3",
     "vue": "^3.2.16"
   },
   "devDependencies": {
