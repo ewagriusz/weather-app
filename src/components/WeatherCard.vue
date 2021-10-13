@@ -24,14 +24,18 @@
         <h6>val</h6>
       </div>
     </div>
-    <div class="row">
+    <div class="row search-container pb-3">
       <label>
+<<<<<<< HEAD
         <input
           class="form-control"
           type="text"
           name="location"
           placeholder="Location"
         />
+=======
+        <input class="search form-control" type="text" placeholder="Location" />
+>>>>>>> 658d442 (feat: basic look of card)
       </label>
     </div>
   </div>
