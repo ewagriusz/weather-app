@@ -2,20 +2,34 @@
 
 <template>
   <div class="container">
-    <div class="row text-center"><h2>Weather ForeCast</h2></div>
-
-    <div class="row">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti itaque
-      sint dolorem totam voluptate voluptatibus! Corporis, laborum soluta!
-      Ratione perferendis tenetur nemo ducimus temporibus ad odit alias, numquam
-      veritatis quas!
+    <div class="general-information">
+      <div class="status row text-center pt-3">
+        <h2>Enter a location</h2>
+      </div>
+      <div class="location row text-center pb-3">
+        <h5>To find the weather</h5>
+      </div>
+    </div>
+    <div class="details-section row pt-6 pb-3">
+      <div class="col text-center border-end">
+        <h5>Wind</h5>
+        <h6>val</h6>
+      </div>
+      <div class="col text-center border-end">
+        <h5>Wind</h5>
+        <h6>val</h6>
+      </div>
+      <div class="col text-center">
+        <h5>Wind</h5>
+        <h6>val</h6>
+      </div>
     </div>
     <div class="row">
       <label>
         <input
           class="form-control"
           type="text"
-          name="peas"
+          name="location"
           placeholder="Location"
         />
       </label>
@@ -30,6 +44,6 @@
   }
 
   .container .row {
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
   }
 </style>
