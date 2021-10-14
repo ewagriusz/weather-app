@@ -12,6 +12,8 @@
 </template>
 
 <script setup lang="ts">
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-nocheck
   /// <reference types="google.maps" />
   document.addEventListener('DOMContentLoaded', function () {
     // let autoCompleteScript = document.createElement('script')
