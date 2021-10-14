@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import SearchBar from './SearchBar.vue'
+</script>
 
 <template>
   <div class="container">
@@ -25,18 +27,7 @@
       </div>
     </div>
     <div class="row search-container pb-3">
-      <label>
-<<<<<<< HEAD
-        <input
-          class="form-control"
-          type="text"
-          name="location"
-          placeholder="Location"
-        />
-=======
-        <input class="search form-control" type="text" placeholder="Location" />
->>>>>>> 658d442 (feat: basic look of card)
-      </label>
+      <SearchBar />
     </div>
   </div>
 </template>
