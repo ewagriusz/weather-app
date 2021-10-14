@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import SearchBar from './SearchBar.vue'
+</script>
 
 <template>
   <div class="container">
@@ -24,15 +26,8 @@
         <h6>val</h6>
       </div>
     </div>
-    <div class="row">
-      <label>
-        <input
-          class="form-control"
-          type="text"
-          name="location"
-          placeholder="Location"
-        />
-      </label>
+    <div class="row pb-3">
+      <SearchBar />
     </div>
   </div>
 </template>
