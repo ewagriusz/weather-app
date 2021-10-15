@@ -18,6 +18,6 @@
   "plugins": [],
   "rules": {},
   "globals": {
-    "google": "readonly"
+    "what3words": "readonly"
   }
 }
