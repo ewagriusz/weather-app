@@ -34,13 +34,22 @@
       </div>
     </div>
   </div>
+  <center clas="( ͡° ͜ʖ ͡°)">
+    <button
+      class="form-control self-center submitButton mt-1"
+      @click="submitSearch()"
+    >
+      Find Weather
+    </button>
+  </center>
 </template>
 
 <script setup lang="ts">
-  import { ref, watch } from '@vue/runtime-core'
-  let word1 = ref('')
-  let word2 = ref('')
-  let word3 = ref('')
+  import { ref, watch, defineEmits } from '@vue/runtime-core'
+  let word1 = ref('podjazd')
+  let word2 = ref('huczny')
+  let word3 = ref('uczciwy')
+
   const words = {
     'first word': word1,
     'second word': word2,
@@ -57,6 +66,14 @@
 
   function changeWords(arg: string) {
     ;[word1, word2, word3].map((el, ind) => (el.value = arg.split(`.`)[ind]))
+  }
+
+  const emit = defineEmits(['newLocation'])
+  function submitSearch() {
+    emit('newLocation', suggestions.value[0].words)
+    ;[word1, word2, word3].map(
+      (el, ind) => (el.value = suggestions.value[0].words.split(`.`)[ind])
+    )
   }
 
   watch([word1, word2, word3], () => {
@@ -97,6 +114,7 @@
     }
   }
   const processPropositions = debounce(() => showPropositions(), 350)
+  processPropositions()
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-nocheck
 
@@ -121,5 +139,9 @@
 
   .option {
     cursor: pointer;
+  }
+
+  .submitButton {
+    width: auto;
   }
 </style>
