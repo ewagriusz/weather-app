@@ -23,11 +23,26 @@
 
   watch([word1, word2, word3], () => {
     if (word1.value !== '' && word2.value !== '' && word3.value !== '')
-      showPropositions()
+      processPropositions()
   })
   function showPropositions() {
     console.log(word1.value, word2.value, word3.value)
   }
+  const debounce = <T extends (...args: unknown[]) => unknown>(
+    callback: T,
+    waitFor: number
+  ) => {
+    let timeout: ReturnType<typeof setTimeout>
+    return (...args: Parameters<T>): ReturnType<T> => {
+      let result: any
+      timeout && clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        result = callback(...args)
+      }, waitFor)
+      return result
+    }
+  }
+  const processPropositions = debounce(() => showPropositions(), 350)
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-nocheck
 
