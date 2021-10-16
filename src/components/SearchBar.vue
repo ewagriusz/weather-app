@@ -1,7 +1,7 @@
 <template>
   <div class="input-group mb-3">
     <input
-      v-for="(varRef, name) in words"
+      v-for="(varRef, name) in placeholderWords"
       :key="name"
       v-model="varRef.value"
       :placeholder="name"
@@ -19,13 +19,6 @@
         <span class="input-group-text words justify-start">
           {{ [getFlagEmoji(option.country), option.nearestPlace].join(` `) }}
         </span>
-        <!-- <span
-          v-for="word in option.words.split('.')"
-          :key="word"
-          class="input-group-text"
-        >
-          {{ word }}
-        </span> -->
         <span class="input-group-text row">
           <div v-for="word in option.words.split('.')" :key="word" class="col">
             {{ word }}
@@ -34,14 +27,14 @@
       </div>
     </div>
   </div>
-  <center clas="( ͡° ͜ʖ ͡°)">
-    <button
-      class="form-control self-center submitButton mt-1"
-      @click="submitSearch()"
-    >
-      Find Weather
-    </button>
-  </center>
+  <!-- <center clas="( ͡° ͜ʖ ͡°)"> -->
+  <button
+    class="form-control self-center submitButton mt-1 m-auto"
+    @click="submitSearch()"
+  >
+    Find Weather
+  </button>
+  <!-- </center> -->
 </template>
 
 <script setup lang="ts">
@@ -49,8 +42,8 @@
   let word1 = ref('podjazd')
   let word2 = ref('huczny')
   let word3 = ref('uczciwy')
-
-  const words = {
+  const refToWords = [word1, word2, word3]
+  const placeholderWords = {
     'first word': word1,
     'second word': word2,
     'third word': word3,
@@ -65,32 +58,31 @@
   let suggestions = ref([] as Option[])
 
   function changeWords(arg: string) {
-    ;[word1, word2, word3].map((el, ind) => (el.value = arg.split(`.`)[ind]))
+    refToWords.map((el, ind) => (el.value = arg.split(`.`)[ind]))
   }
 
   const emit = defineEmits(['newLocation'])
   function submitSearch() {
     emit('newLocation', suggestions.value[0].words)
-    ;[word1, word2, word3].map(
+    refToWords.forEach(
       (el, ind) => (el.value = suggestions.value[0].words.split(`.`)[ind])
     )
   }
 
-  watch([word1, word2, word3], () => {
-    if (word1.value !== '' && word2.value !== '' && word3.value !== '')
-      processPropositions()
+  watch(refToWords, () => {
+    if (refToWords.every(word => word.value !== '')) processPropositions()
   })
+
   async function showPropositions() {
-    console.log(word1.value, word2.value, word3.value)
     const response = await fetch(
-      `https://api.what3words.com/v3/autosuggest?input=${[word1, word2, word3]
+      `https://api.what3words.com/v3/autosuggest?input=${refToWords
         .map(q => q.value)
         .join(`.`)}&key=L6RT3PJO`
     )
     const data = await response.json()
     suggestions.value = data.suggestions as Option[]
-    console.log(suggestions.value)
   }
+
   function getFlagEmoji(countryCode: string) {
     //really edgy way to get charEmoji from countryCode
     return countryCode
@@ -99,13 +91,15 @@
         String.fromCodePoint(127397 + char.charCodeAt(0))
       )
   }
+  //i know this, and couple of other functions should be in seperate file, in proper folder
+  //but im not gonna do it
   const debounce = <T extends (...args: unknown[]) => unknown>(
-    callback: T,
+    callback: (...a: unknown[]) => ReturnType<T>,
     waitFor: number
   ) => {
     let timeout: ReturnType<typeof setTimeout>
     return (...args: Parameters<T>): ReturnType<T> => {
-      let result: any
+      let result: ReturnType<T> = undefined as ReturnType<T>
       timeout && clearTimeout(timeout)
       timeout = setTimeout(() => {
         result = callback(...args)
@@ -113,23 +107,8 @@
       return result
     }
   }
-  const processPropositions = debounce(() => showPropositions(), 350)
+  const processPropositions = debounce(() => showPropositions(), 300)
   processPropositions()
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-nocheck
-
-  // let autoCompleteScript = document.createElement('script')
-  // autoCompleteScript.setAttribute(
-  //   'src',
-  //   'https://assets.what3words.com/sdk/v3/what3words.js?key=L6RT3PJO'
-  // )
-  // document.head.appendChild(autoCompleteScript)
-
-  // what3words.api
-  //   .convertToCoordinates('dodawać.wręczyć.hodowla')
-  //   .then(function (response) {
-  //     console.log('[convertToCoordinates]', response)
-  //   })
 </script>
 
 <style scoped>
