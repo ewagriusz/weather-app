@@ -1,11 +1,58 @@
-# Vue 3 + Typescript + Vite
+<div align="center">
+  <h1>weather-app</h1>
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+  <h5 align="center">
+    get weather from <a href="https://what3words.com/about/">WHAT3WORDS</a> coordinates
+  </h5>
+</div>
 
-## Recommended IDE Setup
+##### It was made using:
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+- [Vite](https://vitejs.dev/) - front-end
+- [Bootstrap 5](https://getbootstrap.com/) - UI Library
+- [TypeScript](https://www.typescriptlang.org/)
 
-## Type Support For `.vue` Imports in TS
+### What is _[what3words](https://what3words.com/about/)_ ?
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+**What3words** is a proprietary geocode system designed to identify any location with a resolution of about 3 metres (9.8 ft). What3words divides the world into a grid of 57 trillion 3-by-3-metre squares, each of which has a three-word address. The addresses are available in forty-seven languages
+
+### Prerequisites to build
+
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/lang/en/)
+
+### Getting Started
+
+```bash
+# Clone repo
+git clone https://github.com/ewagriusz/weather-app
+cd weather-app/
+yarn # or npm install
+```
+
+Change environment variables:
+
+1. Rename `.env.example` to `.env`
+2. Fill required data
+
+### Run front-end
+
+#### Development
+
+```bash
+yarn dev # or npm run dev
+```
+
+#### Production
+
+```bash
+yarn build # or npm run build
+yarn serve # or npm run serve
+```
+
+### Contributing
+
+Just contribute!
+
+### License
+
+[This project is licensed under the MIT License.](https://choosealicense.com/licenses/mit/)
