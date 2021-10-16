@@ -1,4 +1,7 @@
 <template>
+  <p class="h6 text-center small">
+    Write 3 words (you can choose from suggestions), and enjoy the weather!
+  </p>
   <div class="input-group mb-3">
     <input
       v-for="(varRef, name) in placeholderWords"
