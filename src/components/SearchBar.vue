@@ -42,9 +42,9 @@
 
 <script setup lang="ts">
   import { ref, watch, defineEmits } from '@vue/runtime-core'
-  let word1 = ref('podjazd')
-  let word2 = ref('huczny')
-  let word3 = ref('uczciwy')
+  let word1 = ref('')
+  let word2 = ref('')
+  let word3 = ref('')
   const refToWords = [word1, word2, word3]
   const placeholderWords = {
     'first word': word1,
