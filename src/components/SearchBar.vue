@@ -111,7 +111,7 @@
     }
   }
   const processPropositions = debounce(() => showPropositions(), 300)
-  processPropositions()
+  if (refToWords.every(word => word.value !== '')) processPropositions()
 </script>
 
 <style scoped>
