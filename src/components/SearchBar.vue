@@ -74,7 +74,6 @@
   })
 
   async function showPropositions() {
-    console.log()
     const response = await fetch(
       `https://api.what3words.com/v3/autosuggest?input=${refToWords
         .map(q => q.value)
