@@ -40,9 +40,9 @@
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1",
-    "stylelint": "^13.13.1",
-    "stylelint-config-recommended": "^5.0.0",
-    "stylelint-config-standard": "^22.0.0",
+    "stylelint": "^14.0.0",
+    "stylelint-config-recommended": "^6.0.0",
+    "stylelint-config-standard": "^23.0.0",
     "typescript": "^4.4.4",
     "vite": "^2.6.10",
     "vue-tsc": "^0.28.10"
